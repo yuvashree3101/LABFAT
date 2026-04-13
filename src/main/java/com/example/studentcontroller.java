@@ -1,5 +1,6 @@
 package com.example;
 
+// Add these missing imports
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,6 @@ public class StudentController {
 
     @GetMapping("/details")
     public String getDetails() {
-        return "Student Name: John Doe, Course: Computer Science";
+        return "Student Name: [Your Name], Course: [Your Course]";
     }
 }
