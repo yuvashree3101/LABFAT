@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: student-app
+  name: student-reg-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: student-app
@@ -13,8 +13,8 @@ spec:
         app: student-app
     spec:
       containers:
-      - name: student-app
-        image: YOUR_DOCKERHUB_USERNAME/student-reg-app:latest
+      - name: student-container
+        image: your-docker-id/student-app:latest # Replace with your ID
         ports:
         - containerPort: 8080
 ---
@@ -23,9 +23,10 @@ kind: Service
 metadata:
   name: student-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - port: 80
+  - port: 8080
     targetPort: 8080
+    nodePort: 30001
   selector:
     app: student-app
